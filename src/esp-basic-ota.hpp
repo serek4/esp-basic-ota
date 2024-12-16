@@ -31,6 +31,10 @@ class BasicOTA {
 		ArduinoOTA.begin();
 		BASIC_OTA_PRINTLN("OTA started!");
 	};
+	inline void end() {
+		ArduinoOTA.end();
+		BASIC_OTA_PRINTLN("OTA stopped!");
+	};
 	inline void handle() {
 		ArduinoOTA.handle();
 		if (_reboot) {
