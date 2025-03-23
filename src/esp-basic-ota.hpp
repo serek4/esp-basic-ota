@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ArduinoOTA.h>
+#include <esp-basic-plugin.hpp>
 #include <string>
 
 // #define BASIC_OTA_DEBUG
@@ -20,12 +21,11 @@
 
 #define UPDATE_REBOOT_DELAY 100
 
-class BasicOTA {
+class BasicOTA : public BasicPlugin {
   public:
-	BasicOTA();
 	BasicOTA(const char* hostname);
+	BasicOTA();
 
-	void addLogger(void (*logger)(String logLevel, String msg));
 	void setup();
 	inline void begin() {
 		ArduinoOTA.begin();
@@ -49,5 +49,4 @@ class BasicOTA {
   private:
 	bool _reboot;
 	std::string _hostname;
-	void (*_logger)(String logLevel, String msg);
 };

@@ -13,7 +13,6 @@ BasicOTA   KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-addLogger  KEYWORD2
 setup  KEYWORD2
 begin  KEYWORD2
 handle  KEYWORD2
