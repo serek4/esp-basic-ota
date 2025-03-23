@@ -35,15 +35,16 @@ class BasicOTA : public BasicPlugin {
 		ArduinoOTA.end();
 		BASIC_OTA_PRINTLN("OTA stopped!");
 	};
-	inline void handle() {
+	inline bool handle(bool autoReboot = true) {
 		ArduinoOTA.handle();
-		if (_reboot) {
+		if (autoReboot && _reboot) {
 			static u_long rebootTimer = millis();
 			if (millis() - rebootTimer > UPDATE_REBOOT_DELAY) {
 				rebootTimer = millis();
 				ESP.restart();
 			}
 		}
+		return _reboot;
 	};
 
   private:
